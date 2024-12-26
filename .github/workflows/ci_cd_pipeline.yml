@@ -28,12 +28,12 @@ jobs:
 
       - name: Train Model
         run: |
-          python model/train.py
+          python Model/train_model.py
 
       - name: Evaluate Model
         run: |
-          python model/evaluate.py
+          python Model/evaluate.py
 
       - name: Run Unit Tests
         run: |
-          python -m unittest discover -s tests
+          pytest Tests/test_project.py
