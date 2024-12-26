@@ -1,4 +1,4 @@
-scikit-learn
-pickel
 pandas
+scikit-learn
+joblib
 pytest
