@@ -6,7 +6,7 @@ import joblib
 
 def preprocess_data(file_path):
     # Load dataset
-    data = pd.read_csv("E:\Project\Animal_health_classification\Data\data.csv")
+    data = pd.read_csv(file_path)
 
     # Handle missing target values
     data = data.dropna(subset=["Dangerous"])
@@ -26,7 +26,7 @@ def preprocess_data(file_path):
 
 def train_model():
     # Preprocess data
-    X, y = preprocess_data("data.csv")
+    X, y = preprocess_data("e:\Project\Animal_health_classification\Data\data.csv")
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
