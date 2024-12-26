@@ -26,13 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Train Model
+      - name: Train model
         run: |
-          python Model/train_model.py
+          python model/train_model.py
 
-      - name: Evaluate Model
+      - name: Evaluate model
         run: |
-          python Model/evaluate.py
+          python model/evaluate.py
 
       - name: Run Unit Tests
         run: |
