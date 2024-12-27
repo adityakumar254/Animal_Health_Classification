@@ -26,7 +26,7 @@ def preprocess_data(file_path):
 
 def train_model():
     # Preprocess data
-    X, y = preprocess_data("e:\Project\Animal_health_classification\Data\data.csv")
+    X, y = preprocess_data("Animal_health_classification\Data\data.csv")
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
