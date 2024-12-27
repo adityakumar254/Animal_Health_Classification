@@ -1,10 +1,10 @@
-import pandas as pd
 import joblib
+import pandas as pd
 
 def predict(input_symptoms):
-    # Load the model and encoder
-    model = joblib.load("random_forest_model.pkl")
-    encoder = joblib.load("symptoms_encoder.pkl")
+    # Use raw strings to avoid path issues
+    model = joblib.load(r"E:\Project\Animal_health_classification\random_forest_model.pkl")
+    encoder = joblib.load(r"E:\Project\Animal_health_classification\symptoms_encoder.pkl")
     
     # Create a DataFrame with the same structure as training symptoms
     symptom_columns = ["symptoms1", "symptoms2", "symptoms3", "symptoms4", "symptoms5"]

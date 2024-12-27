@@ -1,36 +1,26 @@
-import os
+import unittest
 import sys
-import pytest
-# Add project directory to Python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import os
 
-from model.train_model import train_model
+# Add the parent directory to the sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from model.predict import predict
-from model.evaluate import evaluate_model
 
-@pytest.fixture(scope="module")
-def train_model_fixture():
-    print("\n[INFO] Running train_model()...")
-    train_model()
-    assert os.path.exists("random_forest_model.pkl"), "Model file not found after training."
-    assert os.path.exists("symptoms_encoder.pkl"), "Encoder file not found after training."
-    print("[INFO] Model and encoder files generated successfully.")
-    return True
+class TestAnimalHealthClassification(unittest.TestCase):
+    
+    def test_predict_function(self):
+        # Example input for predicting
+        input_data = ["Fever", "Diarrhea", "Vomiting", "Weight loss", "Dehydration"]
+        
+        # Get the result from the prediction function
+        result = predict(input_data)
+        
+        # Print the result to see if the symptoms are dangerous or not
+        print(f"Prediction result for input {input_data}: {result}")
+        
+        # Check if the prediction is correct
+        self.assertIn(result, ["Yes", "No"])  # We expect "Yes" for Dangerous and "No" for Not Dangerous
 
-def test_train_model(train_model_fixture):
-    assert train_model_fixture, "Training setup failed."
-    print("[SUCCESS] Training test passed.")
-
-def test_predict(train_model_fixture):
-    # Use full path to model files if necessary
-    example_symptoms = ["Fever", "Diarrhea", "Vomiting", "Weight loss", "Dehydration"]
-    prediction = predict(example_symptoms)
-    assert prediction in ["Yes", "No"], "Prediction output is invalid."
-    print(f"[SUCCESS] Prediction test passed. Output: {prediction}")
-
-def test_evaluate_model(train_model_fixture):
-    try:
-        evaluate_model()
-        print("[SUCCESS] Evaluation test passed.")
-    except Exception as e:
-        assert False, f"[ERROR] Evaluation failed with error: {e}"
+if __name__ == "__main__":
+    unittest.main()

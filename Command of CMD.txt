@@ -58,4 +58,12 @@ weighted avg       1.00      1.00      1.00       175
 
 ================================================ 3 passed in 2.94s ================================================
 
-E:\Project\Animal_health_classification>
+E:\Project\Animal_health_classification>cd E:\Project\Animal_health_classification\Tests
+
+E:\Project\Animal_health_classification\Tests>python test_project.py
+Prediction result for input ['Fever', 'Diarrhea', 'Vomiting', 'Weight loss', 'Dehydration']: Yes
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.863s
+
+E:\Project\Animal_health_classification>cd E:\Project\Animal_health_classification\Tests
