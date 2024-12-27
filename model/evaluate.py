@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def evaluate_model():
     # Load data
-    data = pd.read_csv("e:\Project\Animal_health_classification\Data\data.csv")  # Encode symptoms and target variable
+    data = pd.read_csv("Data/data.csv")
     symptom_columns = ["symptoms1", "symptoms2", "symptoms3", "symptoms4", "symptoms5"]
     encoder = joblib.load("symptoms_encoder.pkl")
     X = encoder.transform(data[symptom_columns])
