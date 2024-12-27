@@ -14,7 +14,7 @@ def preprocess_data(file_path):
     ohe = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
     encoded_symptoms = ohe.fit_transform(data[symptom_columns])
     # Save the encoder for prediction use
-    joblib.dump(ohe, "Animal_health_classification/symptoms_encoder.pkl")
+    joblib.dump(ohe, "symptoms_encoder.pkl")
     
     # Prepare features (X) and target (y)
     X = encoded_symptoms
@@ -24,7 +24,7 @@ def preprocess_data(file_path):
 
 def train_model():
     # Preprocess data
-    X, y = preprocess_data(file_path="Animal_health_classification/Data/data.csv")
+    X, y = preprocess_data(file_path="Data/data.csv")
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -34,7 +34,7 @@ def train_model():
     model.fit(X_train, y_train)
 
     # Save the model
-    joblib.dump(model, "Animal_health_classification/random_forest_model.pkl")
+    joblib.dump(model, "random_forest_model.pkl")
     print("Model trained and saved successfully.")
 
 if __name__ == "__main__":
