@@ -28,16 +28,10 @@ jobs:
 
     - name: Run training script
       run: |
-<<<<<<< HEAD
-        python Animal_health_classification/model/train_model.py
-
-    - name: Run tests
-      run: |
-        pytest Tests/test_project.py
-=======
         python model/train_model.py
 
     - name: Run tests
       run: |
         pytest Tests/test_project.py
->>>>>>> bc81aeb688a4485cb973e02f29f1b52f2b59a4e4
+
+        
