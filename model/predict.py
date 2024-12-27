@@ -2,11 +2,7 @@ import joblib
 import pandas as pd
 
 def predict(input_symptoms):
-<<<<<<< HEAD
     # Use relative paths
-=======
-    # Use raw strings to avoid path issues
->>>>>>> f15aa07f31b32aedfe4d2d9c50ab996a0e1bbe8d
     model = joblib.load("Animal_health_classification/random_forest_model.pkl")
     encoder = joblib.load("Animal_health_classification/symptoms_encoder.pkl")
     
