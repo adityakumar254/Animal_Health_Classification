@@ -28,6 +28,7 @@ def train_model():
     # Preprocess data
     X, y = preprocess_data(file_path="Data/data.csv")
 
+
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -36,7 +37,7 @@ def train_model():
     model.fit(X_train, y_train)
 
     # Save the model
-    joblib.dump(model, "random_forest_model.pkl")
+    joblib.dump(model, "Animal_health_classification/random_forest_model.pkl")
     print("Model trained and saved successfully.")
 
 if __name__ == "__main__":
