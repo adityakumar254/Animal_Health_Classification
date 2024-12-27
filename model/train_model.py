@@ -5,18 +5,16 @@ from sklearn.preprocessing import OneHotEncoder
 import joblib
 
 def preprocess_data(file_path):
-    # Load dataset
-    data = pd.read_csv(file_path)
-
     # Handle missing target values
+    data = pd.read_csv(file_path)
     data = data.dropna(subset=["Dangerous"])
     
     # Encode symptoms and target variable
     symptom_columns = ["symptoms1", "symptoms2", "symptoms3", "symptoms4", "symptoms5"]
-    ohe = OneHotEncoder(sparse_output=False, handle_unknown='ignore')  # Updated parameter
+    ohe = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
     encoded_symptoms = ohe.fit_transform(data[symptom_columns])
     # Save the encoder for prediction use
-    joblib.dump(ohe, "symptoms_encoder.pkl")
+    joblib.dump(ohe, "Animal_health_classification/symptoms_encoder.pkl")
     
     # Prepare features (X) and target (y)
     X = encoded_symptoms
@@ -27,7 +25,6 @@ def preprocess_data(file_path):
 def train_model():
     # Preprocess data
     X, y = preprocess_data(file_path="Data/data.csv")
-
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
